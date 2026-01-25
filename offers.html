@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Special Offers | VAAYAK Motors - Heavy-Duty Commercial Vehicles
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="offers.css" />
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="loader-content">
+        <div class="loader-logo">VAAYAK</div>
+        <div class="loader-bar"><span></span></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <svg
+            class="logo-icon"
+            width="40"
+            height="40"
+            viewBox="0 0 100 100"
+            fill="none">
+            <polygon
+              points="50,10 90,30 90,70 50,90 10,70 10,30"
+              fill="#c8102e"
+              stroke="#fff"
+              stroke-width="2" />
+            <text
+              x="50"
+              y="58"
+              text-anchor="middle"
+              fill="white"
+              font-family="Arial Black"
+              font-size="24"
+              font-weight="bold">
+              V
+            </text>
+          </svg>
+          <span>VAAYAK<strong>MOTORS</strong></span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="index.html#home" class="nav-link">Home</a>
+          <a href="index.html#models" class="nav-link">Models</a>
+          <a href="offers.html" class="nav-link active">Special Offers</a>
+          <a href="index.html#fleet" class="nav-link">Fleet Solutions</a>
+          <a href="index.html#support" class="nav-link">Support</a>
+          <a href="index.html#contact" class="nav-link nav-cta">Get Quote</a>
+        </div>
+        <button class="nav-toggle" id="navToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="offers-hero">
+      <div class="hero-content">
+        <div class="hero-badge">Limited Time Offers</div>
+        <h1 class="hero-title">
+          <span class="title-line">SPECIAL</span>
+          <span class="title-line accent">OFFERS</span>
+        </h1>
+        <p class="hero-subtitle">
+          Exceptional deals on our premium heavy-duty commercial vehicles
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label>Industry</label>
+            <select id="industryFilter" onchange="filterOffers()">
+              <option value="all">All Industries</option>
+              <option value="haulage">Haulage & Construction</option>
+              <option value="oil-gas">Oil & Gas</option>
+              <option value="mining">Mining & Construction</option>
+              <option value="shipping">Import & Export Shipping</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Sort By</label>
+            <select id="sortFilter" onchange="filterOffers()">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+          <button class="reset-btn" onclick="resetFilters()">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+              <path d="M1 4v6h6M23 20v-6h-6" />
+              <path
+                d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" />
+            </svg>
+            Reset Filters
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offers Grid -->
+    <section class="offers-section">
+      <div class="container">
+        <div class="offers-grid" id="offersGrid">
+          <!-- Haulage & Construction -->
+          <div class="offer-card" data-category="haulage" data-price="75000">
+            <div class="offer-badge">Limited Stock</div>
+            <div class="offer-image">
+              <img
+                src="https://sc04.alicdn.com/kf/Hb51778824f6b4b34b6df8e2f773e14ecv.jpg"
+                alt="Haulage & Construction Truck" />
+            </div>
+            <div class="offer-content">
+              <div class="offer-category">Haulage & Construction Industry</div>
+              <h3 class="offer-title">HOWO Heavy-Duty Prime Mover</h3>
+              <p class="offer-desc">
+                Purpose-built for construction sites and heavy haulage
+                operations. Exceptional durability and payload capacity.
+              </p>
+
+              <div class="offer-specs">
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <span>420 HP Engine</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                  </svg>
+                  <span>6x4 Drive</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 3v18" />
+                  </svg>
+                  <span>55T GVW</span>
+                </div>
+              </div>
+
+            
+              <div class="offer-features">
+                <div class="feature-tag">Free Maintenance Package</div>
+                <div class="feature-tag">Extended Warranty</div>
+              </div>
+
+              <div class="offer-actions">
+                <button
+                  class="btn btn-primary"
+                  onclick="
+                    requestQuote('HOWO Heavy-Duty Prime Mover', 'haulage')
+                  ">
+                  <span>Request Quote</span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  class="btn btn-outline"
+                  onclick="viewDetails('haulage-1')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Oil & Gas Haulage -->
+          <div class="offer-card" data-category="oil-gas" data-price="88000">
+            <div class="offer-badge hot">Hot Deal</div>
+            <div class="offer-image">
+              <img
+                src="https://image.made-in-china.com/318f0j00VElULAJGHhbD/HOWO-N-20-mp4.webp"
+                alt="Oil & Gas Haulage Truck" />
+            </div>
+            <div class="offer-content">
+              <div class="offer-category">Oil & Gas Haulage</div>
+              <h3 class="offer-title">HOWO N-Series Tanker Chassis</h3>
+              <p class="offer-desc">
+                Engineered specifically for oil and gas transportation with
+                advanced safety features and reliability.
+              </p>
+
+              <div class="offer-specs">
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <span>460 HP Engine</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                  </svg>
+                  <span>8x4 Drive</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 3v18" />
+                  </svg>
+                  <span>45T Capacity</span>
+                </div>
+              </div>
+
+            
+
+              <div class="offer-features">
+                <div class="feature-tag">ADR Certified</div>
+                <div class="feature-tag">Premium Safety Package</div>
+              </div>
+
+              <div class="offer-actions">
+                <button
+                  class="btn btn-primary"
+                  onclick="requestQuote('HOWO N-Series Tanker', 'oil-gas')">
+                  <span>Request Quote</span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  class="btn btn-outline"
+                  onclick="viewDetails('oil-gas-1')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mining & Construction -->
+          <div
+            class="offer-card featured"
+            data-category="mining"
+            data-price="92000">
+            <div class="offer-badge featured-badge">Featured Offer</div>
+            <div class="offer-image">
+              <img
+                src="https://www.sinotruk-howo.com/wp-content/uploads/2025/07/Sinotruk-Howo-NX-6x4-Dump-Truck-1.webp"
+                alt="Mining & Construction Dump Truck" />
+            </div>
+            <div class="offer-content">
+              <div class="offer-category">Mining & Construction</div>
+              <h3 class="offer-title">HOWO NX 6x4 Dump Truck</h3>
+              <p class="offer-desc">
+                Maximum payload capacity for mining operations. Built to
+                withstand the toughest terrains and conditions.
+              </p>
+
+              <div class="offer-specs">
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <span>500 HP Engine</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                  </svg>
+                  <span>6x4 Drive</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 3v18" />
+                  </svg>
+                  <span>60T GVW</span>
+                </div>
+              </div>
+
+              
+
+              <div class="offer-features">
+                <div class="feature-tag">Reinforced Chassis</div>
+                <div class="feature-tag">5-Year Warranty</div>
+              </div>
+
+              <div class="offer-actions">
+                <button
+                  class="btn btn-primary"
+                  onclick="requestQuote('HOWO NX Dump Truck', 'mining')">
+                  <span>Request Quote</span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  class="btn btn-outline"
+                  onclick="viewDetails('mining-1')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Import & Export Shipping -->
+          <div class="offer-card" data-category="shipping" data-price="78000">
+            <div class="offer-badge">New Arrival</div>
+            <div class="offer-image">
+              <img
+                src="https://richbongroup.com/wp-content/uploads/2023/12/1.jpg"
+                alt="Container Truck" />
+            </div>
+            <div class="offer-content">
+              <div class="offer-category">Import & Export Shipping</div>
+              <h3 class="offer-title">Container Tractor Head</h3>
+              <p class="offer-desc">
+                Perfect for port operations and long-haul container
+                transportation. Fuel-efficient and reliable.
+              </p>
+
+              <div class="offer-specs">
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <span>400 HP Engine</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                      d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                  </svg>
+                  <span>4x2 Drive</span>
+                </div>
+                <div class="spec-item">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M9 3v18" />
+                  </svg>
+                  <span>40FT Compatible</span>
+                </div>
+              </div>
+
+
+              <div class="offer-features">
+                <div class="feature-tag">Eco-Efficient</div>
+                <div class="feature-tag">GPS Tracking</div>
+              </div>
+
+              <div class="offer-actions">
+                <button
+                  class="btn btn-primary"
+                  onclick="requestQuote('Container Tractor Head', 'shipping')">
+                  <span>Request Quote</span>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+                <button
+                  class="btn btn-outline"
+                  onclick="viewDetails('shipping-1')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Need Help Finding The Right Vehicle?</h2>
+          <p>
+            Our expert team is ready to assist you in selecting the perfect
+            commercial vehicle for your business needs.
+          </p>
+          <div class="cta-actions">
+            <a href="tel:07073125576" class="btn btn-primary btn-large">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z" />
+              </svg>
+              <span>Call: 07073125576</span>
+            </a>
+            <a href="index.html#contact" class="btn btn-secondary btn-large"
+              >Schedule Consultation</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo">
+              <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                <polygon
+                  points="50,10 90,30 90,70 50,90 10,70 10,30"
+                  fill="#c8102e"
+                  stroke="#fff"
+                  stroke-width="2" />
+                <text
+                  x="50"
+                  y="58"
+                  text-anchor="middle"
+                  fill="white"
+                  font-family="Arial Black"
+                  font-size="24"
+                  font-weight="bold">
+                  V
+                </text>
+              </svg>
+              <span>VAAYAK<strong>MOTORS</strong></span>
+            </a>
+            <p>
+              Industry-leading commercial vehicles for Mining, Logistics &
+              Construction.
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-col">
+              <h4>Products</h4>
+              <a href="index.html#models">Mining Trucks</a>
+              <a href="index.html#models">Logistics Fleet</a>
+              <a href="index.html#models">Construction</a>
+              <a href="offers.html">Special Offers</a>
+            </div>
+            <div class="footer-col">
+              <h4>Company</h4>
+              <a href="#">About Us</a>
+              <a href="#">Careers</a>
+              <a href="#">News</a>
+            </div>
+            <div class="footer-col">
+              <h4>Contact</h4>
+              <a href="tel:07073125576">07073125576</a>
+              <a href="mailto:sales@vaayakmotors.com">sales@vaayakmotors.com</a>
+              <a href="index.html#contact">Get Quote</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 VAAYAK Motors. All rights reserved.</p>
+          <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="offers-script.js"></script>
+  </body>
+</html>

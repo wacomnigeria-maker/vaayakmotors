@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAAYAK Motors | Heavy-Duty Commercial Vehicles</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">VAAYAK</div>
+            <div class="loader-bar"><span></span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <svg class="logo-icon" width="40" height="40" viewBox="0 0 100 100" fill="none">
+                    <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="#c8102e" stroke="#fff" stroke-width="2"/>
+                    <text x="50" y="58" text-anchor="middle" fill="white" font-family="Arial Black" font-size="24" font-weight="bold">V</text>
+                </svg>
+                <span>VAAYAK<strong>MOTORS</strong></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#models" class="nav-link">Models</a>
+                <a href="offers.html" class="nav-link">Special Offers</a>
+                <a href="#configurator" class="nav-link">Configurator</a>
+                <a href="#fleet" class="nav-link">Fleet Solutions</a>
+                <a href="#support" class="nav-link">Support</a>
+                <a href="#contact" class="nav-link nav-cta">Get Quote</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video-container">
+            <div class="hero-overlay"></div>
+            <img src="https://www.sinotruk-howo.com/wp-content/uploads/2025/07/Sinotruk-Howo-NX-6x4-Dump-Truck-1.webp" alt="Fleet of Trucks" class="hero-bg">
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">Heavy-Duty Excellence</div>
+            <h1 class="hero-title">
+                <span class="title-line">BUILT FOR</span>
+                <span class="title-line accent">POWER</span>
+            </h1>
+            <p class="hero-subtitle">Industry-leading commercial vehicles engineered for Mining, Logistics & Construction</p>
+            <div class="hero-actions">
+                <a href="#models" class="btn btn-primary">
+                    <span>Explore Models</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#configurator" class="btn btn-secondary"><span>3D Configurator</span></a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="500">0</span>
+                    <span class="stat-label">HP Max Power</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="60">0</span><span class="stat-suffix">T</span>
+                    <span class="stat-label">Payload Capacity</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="15">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Years Warranty</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+    </section>
+
+    <!-- Industry Selector -->
+    <section class="industry-selector" id="industry">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Choose Your Industry</span>
+                <h2 class="section-title">Tailored Solutions</h2>
+                <p class="section-desc">Select your industry to discover vehicles engineered for your specific operational demands</p>
+            </div>
+            <div class="industry-cards">
+                <div class="industry-card" data-industry="mining" onclick="scrollToModels('mining')">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1578598336003-1514a96268a0?w=600&q=80" alt="Mining Operations">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Mining</h3>
+                        <p>Heavy-duty trucks built for the toughest terrain and maximum payload</p>
+                        <span class="industry-link">Explore Specs →</span>
+                    </div>
+                </div>
+                <div class="industry-card" data-industry="logistics" onclick="scrollToModels('logistics')">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="Logistics Fleet">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Logistics</h3>
+                        <p>Efficient long-haul solutions designed for reliability and fuel economy</p>
+                        <span class="industry-link">Explore Specs →</span>
+                    </div>
+                </div>
+                <div class="industry-card" data-industry="construction" onclick="scrollToModels('construction')">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Construction Site">
+                    </div>
+                    <div class="industry-content">
+                        <h3>Construction</h3>
+                        <p>Versatile vehicles engineered for demanding construction sites</p>
+                        <span class="industry-link">Explore Specs →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Showcase -->
+    <section class="models-showcase" id="models">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Fleet</span>
+                <h2 class="section-title">Premium Models</h2>
+            </div>
+            <div class="models-grid">
+                <div class="model-card featured" data-category="mining">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="HOWO NX 430">
+                        <div class="model-badge">Mining Series</div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-header">
+                            <h3 class="model-name">HOWO NX 430</h3>
+                            <span class="model-type">Prime Mover</span>
+                        </div>
+                        <p class="model-desc">Purpose-built for mining operations with exceptional durability and maximum payload capacity.</p>
+                        <div class="model-specs">
+                            <div class="spec"><span class="spec-value">430</span><span class="spec-label">HP</span></div>
+                            <div class="spec"><span class="spec-value">60T</span><span class="spec-label">GVW</span></div>
+                            <div class="spec"><span class="spec-value">6x4</span><span class="spec-label">Drive</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <a href="#configurator" class="btn btn-outline" onclick="selectModel('nx430')">Configure</a>
+                            <button class="btn btn-text" onclick="downloadSpecs('HOWO NX 430')">Download Specs
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card" data-category="logistics">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1586191582056-30f0da898a3b?w=600&q=80" alt="HOWO Max 400">
+                        <div class="model-badge">Logistics Series</div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-header">
+                            <h3 class="model-name">HOWO MAX 400</h3>
+                            <span class="model-type">Tractor Head</span>
+                        </div>
+                        <p class="model-desc">Long-haul efficiency meets comfort for extended journeys.</p>
+                        <div class="model-specs">
+                            <div class="spec"><span class="spec-value">400</span><span class="spec-label">HP</span></div>
+                            <div class="spec"><span class="spec-value">45T</span><span class="spec-label">GVW</span></div>
+                            <div class="spec"><span class="spec-value">4x2</span><span class="spec-label">Drive</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <a href="#configurator" class="btn btn-outline" onclick="selectModel('max400')">Configure</a>
+                            <button class="btn btn-text" onclick="downloadSpecs('HOWO MAX 400')">Download Specs
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card" data-category="construction">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=600&q=80" alt="HOWO TX 380">
+                        <div class="model-badge">Construction Series</div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-header">
+                            <h3 class="model-name">HOWO TX 380</h3>
+                            <span class="model-type">Dump Truck</span>
+                        </div>
+                        <p class="model-desc">Rugged construction vehicle built for demanding sites.</p>
+                        <div class="model-specs">
+                            <div class="spec"><span class="spec-value">380</span><span class="spec-label">HP</span></div>
+                            <div class="spec"><span class="spec-value">50T</span><span class="spec-label">GVW</span></div>
+                            <div class="spec"><span class="spec-value">8x4</span><span class="spec-label">Drive</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <a href="#configurator" class="btn btn-outline" onclick="selectModel('tx380')">Configure</a>
+                            <button class="btn btn-text" onclick="downloadSpecs('HOWO TX 380')">Download Specs
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="model-card" data-category="mining">
+                    <div class="model-image">
+                        <img src="https://images.unsplash.com/photo-1605705658744-45f0fe8f9663?w=600&q=80" alt="HOWO A7 500">
+                        <div class="model-badge">Heavy Duty</div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-header">
+                            <h3 class="model-name">HOWO A7 500</h3>
+                            <span class="model-type">Heavy Hauler</span>
+                        </div>
+                        <p class="model-desc">Maximum power for the most demanding applications.</p>
+                        <div class="model-specs">
+                            <div class="spec"><span class="spec-value">500</span><span class="spec-label">HP</span></div>
+                            <div class="spec"><span class="spec-value">70T</span><span class="spec-label">GVW</span></div>
+                            <div class="spec"><span class="spec-value">6x6</span><span class="spec-label">Drive</span></div>
+                        </div>
+                        <div class="model-actions">
+                            <a href="#configurator" class="btn btn-outline" onclick="selectModel('a7500')">Configure</a>
+                            <button class="btn btn-text" onclick="downloadSpecs('HOWO A7 500')">Download Specs
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="models-cta">
+                <a href="offers.html" class="btn btn-primary" style="margin-right: 16px;">View Special Offers</a>
+                <button class="btn btn-primary" onclick="openCatalog()">View Full Catalog</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Configurator Section -->
+    <section class="configurator-section" id="configurator">
+        <div class="configurator-bg"></div>
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Advanced Configurator</span>
+                <h2 class="section-title" style="color: white;">Build Your Perfect Truck</h2>
+                <p class="section-desc" style="color: #a1a1aa;">Customize every detail and get instant pricing</p>
+            </div>
+            
+            <div class="configurator-app">
+                <div class="config-viewer">
+                    <div class="config-truck-display">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80" alt="Truck Preview" id="configTruckImage" class="config-main-image">
+                        <div class="config-360-badge">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+                            <span>360° View</span>
+                        </div>
+                    </div>
+                    <div class="config-thumbnails">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" alt="Exterior" class="thumb active" onclick="changeView(this, 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80')">
+                        <img src="https://images.unsplash.com/photo-1449965408869-euj3c92d3fd2?w=200&q=80" alt="Interior" class="thumb" onclick="changeView(this, 'https://images.unsplash.com/photo-1449965408869-euj3c92d3fd2?w=1000&q=80')">
+                        <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=200&q=80" alt="Engine" class="thumb" onclick="changeView(this, 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1000&q=80')">
+                        <img src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=200&q=80" alt="Side" class="thumb" onclick="changeView(this, 'https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=1000&q=80')">
+                    </div>
+                </div>
+                
+                <div class="config-panel">
+                    <div class="config-section">
+                        <h4>Select Model</h4>
+                        <div class="config-models">
+                            <button class="model-btn active" data-model="nx430" data-price="85000" onclick="selectModelBtn(this)">
+                                <span class="model-btn-name">HOWO NX 430</span>
+                                <span class="model-btn-price">$85,000</span>
+                            </button>
+                            <button class="model-btn" data-model="max400" data-price="72000" onclick="selectModelBtn(this)">
+                                <span class="model-btn-name">HOWO MAX 400</span>
+                                <span class="model-btn-price">$72,000</span>
+                            </button>
+                            <button class="model-btn" data-model="tx380" data-price="68000" onclick="selectModelBtn(this)">
+                                <span class="model-btn-name">HOWO TX 380</span>
+                                <span class="model-btn-price">$68,000</span>
+                            </button>
+                            <button class="model-btn" data-model="a7500" data-price="95000" onclick="selectModelBtn(this)">
+                                <span class="model-btn-name">HOWO A7 500</span>
+                                <span class="model-btn-price">$95,000</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h4>Exterior Color</h4>
+                        <div class="color-options">
+                            <button class="color-btn active" data-color="white" data-price="0" style="--color: #ffffff" title="Arctic White" onclick="selectColor(this)"></button>
+                            <button class="color-btn" data-color="red" data-price="1200" style="--color: #dc2626" title="Racing Red (+$1,200)" onclick="selectColor(this)"></button>
+                            <button class="color-btn" data-color="blue" data-price="1200" style="--color: #1e40af" title="Ocean Blue (+$1,200)" onclick="selectColor(this)"></button>
+                            <button class="color-btn" data-color="black" data-price="800" style="--color: #171717" title="Midnight Black (+$800)" onclick="selectColor(this)"></button>
+                            <button class="color-btn" data-color="silver" data-price="600" style="--color: #9ca3af" title="Steel Silver (+$600)" onclick="selectColor(this)"></button>
+                            <button class="color-btn" data-color="orange" data-price="1500" style="--color: #ea580c" title="Sunset Orange (+$1,500)" onclick="selectColor(this)"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h4>Engine Options</h4>
+                        <div class="config-options">
+                            <label class="option-item">
+                                <input type="radio" name="engine" value="standard" data-price="0" checked onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Standard Engine</span>
+                                    <span class="option-desc">Base configuration</span>
+                                </span>
+                                <span class="option-price">Included</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="engine" value="turbo" data-price="8500" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Turbo Boost Pack</span>
+                                    <span class="option-desc">+50 HP, Enhanced torque</span>
+                                </span>
+                                <span class="option-price">+$8,500</span>
+                            </label>
+                            <label class="option-item">
+                                <input type="radio" name="engine" value="eco" data-price="5000" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Eco Efficiency</span>
+                                    <span class="option-desc">15% better fuel economy</span>
+                                </span>
+                                <span class="option-price">+$5,000</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h4>Additional Features</h4>
+                        <div class="config-options">
+                            <label class="option-item checkbox">
+                                <input type="checkbox" name="feature" value="ac" data-price="2500" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Premium A/C System</span>
+                                    <span class="option-desc">Dual-zone climate control</span>
+                                </span>
+                                <span class="option-price">+$2,500</span>
+                            </label>
+                            <label class="option-item checkbox">
+                                <input type="checkbox" name="feature" value="camera" data-price="1800" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">360° Camera System</span>
+                                    <span class="option-desc">Surround view monitoring</span>
+                                </span>
+                                <span class="option-price">+$1,800</span>
+                            </label>
+                            <label class="option-item checkbox">
+                                <input type="checkbox" name="feature" value="suspension" data-price="4200" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Air Suspension</span>
+                                    <span class="option-desc">Enhanced ride comfort</span>
+                                </span>
+                                <span class="option-price">+$4,200</span>
+                            </label>
+                            <label class="option-item checkbox">
+                                <input type="checkbox" name="feature" value="telematics" data-price="3500" onchange="updatePrice()">
+                                <span class="option-content">
+                                    <span class="option-name">Fleet Telematics</span>
+                                    <span class="option-desc">GPS tracking & diagnostics</span>
+                                </span>
+                                <span class="option-price">+$3,500</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="config-summary">
+                        <div class="summary-price">
+                            <span>Configured Price</span>
+                            <span class="price-value" id="totalPrice">$85,000</span>
+                        </div>
+                        <div class="summary-actions">
+                            <button class="btn btn-primary btn-full" onclick="requestQuote()">
+                                <span>Request Quote</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                            <button class="btn btn-secondary btn-full" onclick="saveConfiguration()">Save Configuration</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Gallery</span>
+                <h2 class="section-title">See Them In Action</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80" alt="Truck Fleet">
+                    <div class="gallery-overlay"><span>Fleet Operations</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Mining Truck">
+                    <div class="gallery-overlay"><span>Mining Applications</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80" alt="Logistics">
+                    <div class="gallery-overlay"><span>Logistics Hub</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=500&q=80" alt="Truck Interior">
+                    <div class="gallery-overlay"><span>Premium Interior</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605705658744-45f0fe8f9663?w=500&q=80" alt="Heavy Hauler">
+                    <div class="gallery-overlay"><span>Heavy Hauling</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&q=80" alt="Construction">
+                    <div class="gallery-overlay"><span>Construction Sites</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Solutions -->
+    <section class="fleet-section" id="fleet">
+        <div class="container">
+            <div class="fleet-layout">
+                <div class="fleet-content">
+                    <span class="section-tag">Fleet Management</span>
+                    <h2 class="section-title">Enterprise<br>Solutions</h2>
+                    <p class="fleet-desc">Transform your fleet operations with our comprehensive management platform.</p>
+                    <div class="fleet-features">
+                        <div class="fleet-feature">
+                            <div class="feature-number">01</div>
+                            <div class="feature-content">
+                                <h4>Fleet Cost Analysis</h4>
+                                <p>Comprehensive dashboard for monitoring operational costs</p>
+                            </div>
+                        </div>
+                        <div class="fleet-feature">
+                            <div class="feature-number">02</div>
+                            <div class="feature-content">
+                                <h4>Telematics Integration</h4>
+                                <p>Real-time vehicle tracking and performance monitoring</p>
+                            </div>
+                        </div>
+                        <div class="fleet-feature">
+                            <div class="feature-number">03</div>
+                            <div class="feature-content">
+                                <h4>API Connectivity</h4>
+                                <p>Seamless integration with fleet management software</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="openFleetPortal()">Access Fleet Portal</button>
+                </div>
+                <div class="fleet-visual">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Dashboard" class="fleet-dashboard-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section" id="support">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">Ownership & Support</span>
+                <h2 class="section-title">We've Got You Covered</h2>
+            </div>
+            <div class="support-grid">
+                <div class="support-card" onclick="showToast('Maintenance Scheduler opening...')">
+                    <div class="support-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 18h36"/><path d="M14 26h8M14 32h12"/></svg>
+                    </div>
+                    <h3>Maintenance Scheduler</h3>
+                    <p>Interactive maintenance planning with automated reminders</p>
+                    <span class="support-link">Schedule Service →</span>
+                </div>
+                <div class="support-card" onclick="showToast('Parts Catalog opening...')">
+                    <div class="support-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l6 6"/></svg>
+                    </div>
+                    <h3>Parts Catalog</h3>
+                    <p>Extensive parts database with 3D diagrams</p>
+                    <span class="support-link">Browse Parts →</span>
+                </div>
+                <div class="support-card" onclick="showToast('Connecting to support...')">
+                    <div class="support-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M44 34V22a2 2 0 00-2-2H6a2 2 0 00-2 2v12"/><circle cx="16" cy="34" r="4"/><circle cx="32" cy="34" r="4"/></svg>
+                    </div>
+                    <h3>Uptime Center</h3>
+                    <p>24/7 live support with remote diagnostics</p>
+                    <span class="support-link">Get Support →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-layout">
+                <div class="contact-info">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 class="section-title">Request a<br>Quote Today</h2>
+                    <p>Our team is ready to help you find the perfect vehicle solution.</p>
+                    <div class="contact-details">
+                        <div class="contact-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0122 16.92z"/></svg><span>+234 800 VAAYAK</span></div>
+                        <div class="contact-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>enquiry@vaayak.com</span></div>
+                        <div class="contact-item"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Lagos, Nigeria</span></div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" placeholder="Your Company">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required placeholder="john@company.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+234 XXX XXX XXXX">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select an option</option>
+                                <option value="mining">Mining Vehicles</option>
+                                <option value="logistics">Logistics Fleet</option>
+                                <option value="construction">Construction Equipment</option>
+                                <option value="fleet">Fleet Management</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Enquiry</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                            <polygon points="50,10 90,30 90,70 50,90 10,70 10,30" fill="#c8102e" stroke="#fff" stroke-width="2"/>
+                            <text x="50" y="58" text-anchor="middle" fill="white" font-family="Arial Black" font-size="24" font-weight="bold">V</text>
+                        </svg>
+                        <span>VAAYAK<strong>MOTORS</strong></span>
+                    </a>
+                    <p>Industry-leading commercial vehicles for Mining, Logistics & Construction.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Products</h4>
+                        <a href="#models">Mining Trucks</a>
+                        <a href="#models">Logistics Fleet</a>
+                        <a href="#models">Construction</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">News</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Resources</h4>
+                        <a href="#contact">Dealer Locator</a>
+                        <a href="#fleet">Fleet Portal</a>
+                        <a href="#support">Support</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VAAYAK Motors. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
