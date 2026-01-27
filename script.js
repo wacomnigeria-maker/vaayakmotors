@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCounters();
     initConfigurator();
+    initParallax();
+    initButtonHoverEffects();
+    
+    // Console branding
+    console.log('%c VAAYAK MOTORS ', 'background: #c8102e; color: white; font-size: 20px; font-weight: bold; padding: 10px 20px;');
 });
 
 // ========== LOADER ==========
@@ -34,18 +39,25 @@ function initNavigation() {
     const navLinks = document.getElementById('navLinks');
     const links = document.querySelectorAll('.nav-link');
     
+    // Scroll effect
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
+        if (window.pageYOffset > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        
+        // Update active nav link based on scroll position
+        updateActiveNavLink();
     });
     
+    // FIXED: Hamburger menu toggle
     navToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
+        navToggle.classList.toggle('active');
     });
     
+    // Close mobile menu when clicking on a link
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
@@ -53,11 +65,44 @@ function initNavigation() {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
+                    // Close mobile menu
                     navLinks.classList.remove('active');
+                    navToggle.classList.remove('active');
+                    
+                    // Smooth scroll to target
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
         });
+    });
+    
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navbar.contains(e.target)) {
+            navLinks.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+}
+
+// Update active nav link on scroll
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
     });
 }
 
@@ -69,21 +114,33 @@ function initScrollAnimations() {
                 entry.target.classList.add('animate-in');
             }
         });
-    }, { threshold: 0.1 });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
     
+    // Observe elements for animation
     document.querySelectorAll('.section-header, .industry-card, .model-card, .support-card, .fleet-feature, .gallery-item').forEach(el => {
         el.classList.add('animate-element');
         observer.observe(el);
     });
     
+    // Add animation styles
     const style = document.createElement('style');
     style.textContent = `
-        .animate-element { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .animate-element.animate-in { opacity: 1; transform: translateY(0); }
+        .animate-element { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            transition: opacity 0.6s ease, transform 0.6s ease; 
+        }
+        .animate-element.animate-in { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
         .industry-card:nth-child(1), .support-card:nth-child(1), .gallery-item:nth-child(1) { transition-delay: 0s; }
         .industry-card:nth-child(2), .support-card:nth-child(2), .gallery-item:nth-child(2) { transition-delay: 0.1s; }
         .industry-card:nth-child(3), .support-card:nth-child(3), .gallery-item:nth-child(3) { transition-delay: 0.2s; }
-        .gallery-item:nth-child(4) { transition-delay: 0.3s; }
+        .industry-card:nth-child(4), .support-card:nth-child(4), .gallery-item:nth-child(4) { transition-delay: 0.3s; }
         .gallery-item:nth-child(5) { transition-delay: 0.4s; }
         .gallery-item:nth-child(6) { transition-delay: 0.5s; }
     `;
@@ -96,11 +153,11 @@ function initCounters() {
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-target'));
                 animateCounter(counter, target);
-                observer.unobserve(counter);
+                counter.classList.add('animated');
             }
         });
     }, { threshold: 0.5 });
@@ -110,19 +167,20 @@ function initCounters() {
 
 function animateCounter(element, target) {
     const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
+    const increment = target / (duration / 16);
     let current = 0;
     
-    const timer = setInterval(() => {
+    const updateCounter = () => {
         current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
+        if (current < target) {
             element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
         }
-    }, duration / steps);
+    };
+    
+    updateCounter();
 }
 
 // ========== CONFIGURATOR ==========
@@ -156,7 +214,9 @@ function selectColor(btn) {
     updatePrice();
     
     const img = document.getElementById('configTruckImage');
-    img.style.filter = getColorFilter(btn.dataset.color);
+    if (img) {
+        img.style.filter = getColorFilter(btn.dataset.color);
+    }
 }
 
 function getColorFilter(color) {
@@ -182,7 +242,10 @@ function updatePrice() {
     configState.featuresPrice = featuresTotal;
     
     const total = configState.modelPrice + configState.colorPrice + configState.enginePrice + configState.featuresPrice;
-    document.getElementById('totalPrice').textContent = '$' + total.toLocaleString();
+    const priceElement = document.getElementById('totalPrice');
+    if (priceElement) {
+        priceElement.textContent = '$' + total.toLocaleString();
+    }
 }
 
 function changeView(thumb, imageUrl) {
@@ -190,18 +253,35 @@ function changeView(thumb, imageUrl) {
     thumb.classList.add('active');
     
     const mainImage = document.getElementById('configTruckImage');
-    mainImage.style.opacity = '0.5';
-    
-    setTimeout(() => {
-        mainImage.src = imageUrl;
-        mainImage.style.opacity = '1';
-    }, 200);
+    if (mainImage) {
+        mainImage.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            mainImage.src = imageUrl;
+            mainImage.style.opacity = '1';
+        }, 200);
+    }
 }
 
 // ========== CTA FUNCTIONS ==========
 function scrollToModels(industry) {
-    document.getElementById('models').scrollIntoView({ behavior: 'smooth' });
-    showToast('Showing ' + industry + ' vehicles', 'info');
+    const modelsSection = document.getElementById('models');
+    if (modelsSection) {
+        modelsSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Filter models by category
+        const modelCards = document.querySelectorAll('.model-card');
+        modelCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (industry === 'all' || category === industry) {
+                card.style.display = 'grid';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        showToast('Showing ' + industry + ' vehicles', 'info');
+    }
 }
 
 function selectModel(modelId) {
@@ -209,19 +289,68 @@ function selectModel(modelId) {
     if (btn) {
         selectModelBtn(btn);
     }
+    showToast('Model ' + modelId.toUpperCase() + ' selected for configuration', 'info');
 }
 
 function downloadSpecs(modelName) {
     showToast('Downloading ' + modelName + ' specifications...', 'success');
     
     setTimeout(() => {
-        const content = 'VAAYAK MOTORS - ' + modelName + ' SPECIFICATIONS\n============================================\n\nEngine: Heavy-Duty Diesel\nPower: 380-500 HP\nTorque: 1800-2500 Nm\nTransmission: 12-Speed Automated\nDrive Configuration: 4x2 / 6x4 / 8x4\nGVW: 45-70 Tonnes\n\nDIMENSIONS\n-----------\nLength: 7,500 - 9,200 mm\nWidth: 2,550 mm\nHeight: 3,200 - 3,500 mm\n\nFEATURES\n--------\n- Premium Cabin with A/C\n- Advanced Telematics\n- ABS + EBS Braking System\n- Hill Start Assist\n- Cruise Control\n\nContact: sales@vaayakmotors.com\nPhone: +234 800 VAAYAK';
+        const content = `VAAYAK MOTORS - ${modelName} SPECIFICATIONS
+============================================
+
+ENGINE & PERFORMANCE
+-------------------
+Engine: Heavy-Duty Diesel
+Power: 380-500 HP
+Torque: 1800-2500 Nm
+Transmission: 12-Speed Automated
+Drive Configuration: 4x2 / 6x4 / 8x4
+GVW: 45-70 Tonnes
+
+DIMENSIONS
+----------
+Length: 7,500 - 9,200 mm
+Width: 2,550 mm
+Height: 3,200 - 3,500 mm
+Wheelbase: 3,600 - 5,200 mm
+
+FEATURES
+--------
+✓ Premium Air-Conditioned Cabin
+✓ Advanced Telematics System
+✓ ABS + EBS Braking System
+✓ Hill Start Assist
+✓ Cruise Control
+✓ Adjustable Driver Seat
+✓ Multimedia System
+✓ LED Headlights
+
+SAFETY
+------
+✓ Electronic Stability Control
+✓ Lane Departure Warning
+✓ Blind Spot Monitoring
+✓ Fire Suppression System
+✓ Emergency Brake Assist
+
+WARRANTY
+--------
+✓ 15+ Years Comprehensive Warranty
+✓ 24/7 Roadside Assistance
+✓ Free Maintenance (First 2 Years)
+
+CONTACT
+-------
+Email: sales@vaayakmotors.com
+Phone: +2347073125576
+Website: www.vaayakmotors.com`;
         
         const blob = new Blob([content], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = modelName.replace(/\s+/g, '_') + '_Specs.txt';
+        a.download = modelName.replace(/\s+/g, '_') + '_Specifications.txt';
         a.click();
         URL.revokeObjectURL(url);
     }, 1000);
@@ -230,25 +359,37 @@ function downloadSpecs(modelName) {
 function openCatalog() {
     showToast('Opening full catalog...', 'info');
     setTimeout(() => {
-        document.getElementById('models').scrollIntoView({ behavior: 'smooth' });
+        const modelsSection = document.getElementById('models');
+        if (modelsSection) {
+            modelsSection.scrollIntoView({ behavior: 'smooth' });
+        }
     }, 500);
 }
 
 function requestQuote() {
-    const total = document.getElementById('totalPrice').textContent;
+    const totalElement = document.getElementById('totalPrice');
+    const total = totalElement ? totalElement.textContent : 'your configured vehicle';
     showToast('Quote request for ' + total + ' - Redirecting to contact form...', 'success');
     
     setTimeout(() => {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        document.getElementById('interest').value = 'mining';
-        document.getElementById('message').value = 'I am interested in a configured truck at ' + total + '. Please contact me with more details.';
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            
+            const interestField = document.getElementById('interest');
+            const messageField = document.getElementById('message');
+            
+            if (interestField) interestField.value = 'mining';
+            if (messageField) messageField.value = 'I am interested in a configured truck at ' + total + '. Please contact me with more details.';
+        }
     }, 1000);
 }
 
 function saveConfiguration() {
+    const totalElement = document.getElementById('totalPrice');
     const config = {
         model: configState.model,
-        total: document.getElementById('totalPrice').textContent,
+        total: totalElement ? totalElement.textContent : '$85,000',
         timestamp: new Date().toISOString()
     };
     
@@ -259,21 +400,32 @@ function saveConfiguration() {
 function openFleetPortal() {
     showToast('Fleet Portal requires authentication. Contact sales for access.', 'info');
     setTimeout(() => {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        document.getElementById('interest').value = 'fleet';
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            const interestField = document.getElementById('interest');
+            if (interestField) interestField.value = 'fleet';
+        }
     }, 1500);
 }
 
+// ========== FORM SUBMISSION ==========
 function submitForm(e) {
     e.preventDefault();
     
     const form = e.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    console.log('Form Data:', data);
+    
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     
     btn.innerHTML = '<span>Sending...</span>';
     btn.disabled = true;
     
+    // Simulate form submission
     setTimeout(() => {
         showToast('Thank you! Your enquiry has been submitted. We will contact you within 24 hours.', 'success');
         form.reset();
@@ -286,6 +438,8 @@ function submitForm(e) {
 function showToast(message, type) {
     type = type || 'info';
     const container = document.getElementById('toastContainer');
+    if (!container) return;
+    
     const toast = document.createElement('div');
     toast.className = 'toast ' + type;
     
@@ -303,20 +457,75 @@ function showToast(message, type) {
     }, 4000);
 }
 
-// Add slideOut animation
-const toastStyle = document.createElement('style');
-toastStyle.textContent = '@keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }';
-document.head.appendChild(toastStyle);
+// ========== PARALLAX EFFECTS ==========
+function initParallax() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        
+        // Hero parallax
+        const heroContent = document.querySelector('.hero-content');
+        const heroImg = document.querySelector('.hero-bg');
+        
+        if (heroContent && scrolled < window.innerHeight) {
+            heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+            heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+        }
+        
+        if (heroImg && scrolled < window.innerHeight) {
+            heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
+    });
+}
 
-// ========== PARALLAX ==========
-window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero-bg');
-    const scrolled = window.pageYOffset;
-    
-    if (hero && scrolled < window.innerHeight) {
-        hero.style.transform = 'translateY(' + (scrolled * 0.3) + 'px)';
-    }
+// ========== BUTTON HOVER EFFECTS ==========
+function initButtonHoverEffects() {
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+        });
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+// ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '#home') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
 });
 
-// Console branding
-console.log('%c VAAYAK MOTORS ', 'background: #c8102e; color: white; font-size: 20px; font-weight: bold; padding: 10px 20px;');
+// ========== IMAGE LAZY LOADING FALLBACK ==========
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src || img.src;
+    });
+} else {
+    // Fallback for browsers that don't support lazy loading
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
+
+// Add slideOut animation to document
+const toastStyle = document.createElement('style');
+toastStyle.textContent = `
+    @keyframes slideOutRight { 
+        from { transform: translateX(0); opacity: 1; } 
+        to { transform: translateX(100%); opacity: 0; } 
+    }
+`;
+document.head.appendChild(toastStyle);
