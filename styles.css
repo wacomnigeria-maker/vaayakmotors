@@ -496,6 +496,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
+
 /* Hero Section with Beautiful Gradients */
 .hero {
     position: relative;
@@ -721,7 +722,7 @@ h1, h2, h3, h4, h5, h6 {
     to { opacity: 1; }
 }
 
-/* Industry Selector with Gradients */
+/* Industry Selector with Colored Backgrounds */
 .industry-selector {
     padding: var(--section-padding) 0;
     background: linear-gradient(to bottom, var(--gray-50), var(--white));
@@ -735,11 +736,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .industry-card {
     position: relative;
-    background: var(--white);
     border: 1px solid var(--gray-200);
     transition: all var(--transition-base);
     cursor: pointer;
     overflow: hidden;
+}
+
+/* Different background colors for each industry */
+.industry-card[data-industry="mining"] {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+}
+
+.industry-card[data-industry="logistics"] {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+}
+
+.industry-card[data-industry="construction"] {
+    background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+}
+
+.industry-card[data-industry="oilgas"] {
+    background: linear-gradient(135deg, #e5e7eb 0%, #cbd5e1 100%);
 }
 
 .industry-card::before {
@@ -780,9 +797,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .industry-image {
-    height: 200px;
+    height: 280px;
     overflow: hidden;
     position: relative;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .industry-image::after {
@@ -790,22 +811,26 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
+    pointer-events: none;
 }
 
 .industry-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: transform var(--transition-slow);
+    padding: 12px;
 }
 
 .industry-card:hover .industry-image img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .industry-content {
     padding: 32px;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
     position: relative;
     z-index: 1;
 }
@@ -824,7 +849,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .industry-card p {
     font-size: 0.9375rem;
-    color: var(--gray-600);
+    color: var(--gray-700);
     margin-bottom: 24px;
 }
 
@@ -868,7 +893,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .model-card {
-    background: var(--gray-50);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border: 1px solid var(--gray-200);
     overflow: hidden;
     transition: all var(--transition-base);
@@ -907,25 +932,32 @@ h1, h2, h3, h4, h5, h6 {
 .model-image {
     position: relative;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    min-height: 350px;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .model-card.featured .model-image {
-    aspect-ratio: auto;
+    min-height: 450px;
 }
 
 .model-image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+    pointer-events: none;
 }
 
 .model-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     transition: transform var(--transition-slow);
+    padding: 20px;
 }
 
 .model-card:hover .model-image img {
@@ -1038,6 +1070,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin-top: 60px;
 }
+
 /* Gallery Section with Gradient Overlays */
 .gallery-section {
     padding: var(--section-padding) 0;
@@ -1047,7 +1080,6 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 250px);
     gap: 16px;
 }
 
@@ -1056,16 +1088,22 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     border-radius: 8px;
     cursor: pointer;
+    min-height: 250px;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-item.large {
-    grid-row: span 2;
+    min-height: 520px;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 0.5s ease;
 }
 
@@ -1097,7 +1135,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Fleet Section with Gradient Background */
 .fleet-section {
     padding: var(--section-padding) 0;
-    background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .fleet-layout {
@@ -1175,7 +1213,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Support Section */
 .support-section {
     padding: var(--section-padding) 0;
-    background: var(--gray-50);
+    background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%);
 }
 
 .support-grid {
@@ -1264,7 +1302,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Contact Section with Gradient Background */
 .contact-section {
     padding: var(--section-padding) 0;
-    background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 .contact-layout {
@@ -1575,6 +1613,18 @@ h1, h2, h3, h4, h5, h6 {
         gap: 16px;
     }
     
+    .industry-image {
+        height: 250px;
+    }
+    
+    .model-image {
+        min-height: 300px;
+    }
+    
+    .model-card.featured .model-image {
+        min-height: 350px;
+    }
+    
     .support-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -1596,11 +1646,11 @@ h1, h2, h3, h4, h5, h6 {
     
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
     }
     
+    .gallery-item,
     .gallery-item.large {
-        grid-row: span 1;
+        min-height: 200px;
     }
 }
 
@@ -1632,8 +1682,33 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
     
+    .gallery-item,
+    .gallery-item.large {
+        min-height: 220px;
+    }
+    
     .industry-cards {
         grid-template-columns: 1fr;
+    }
+    
+    .industry-image {
+        height: 220px;
+    }
+    
+    .industry-image img {
+        padding: 8px;
+    }
+    
+    .model-image {
+        min-height: 280px;
+    }
+    
+    .model-card.featured .model-image {
+        min-height: 300px;
+    }
+    
+    .model-image img {
+        padding: 15px;
     }
 }
 
@@ -1653,6 +1728,26 @@ h1, h2, h3, h4, h5, h6 {
     
     .title-line {
         font-size: 3rem;
+    }
+    
+    .industry-image {
+        height: 200px;
+    }
+    
+    .industry-image img {
+        padding: 6px;
+    }
+    
+    .model-image {
+        min-height: 250px;
+    }
+    
+    .model-card.featured .model-image {
+        min-height: 280px;
+    }
+    
+    .model-image img {
+        padding: 12px;
     }
 }
 
