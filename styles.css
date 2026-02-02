@@ -644,8 +644,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stat {
-    display: flex;
-    flex-direction: column;
+    display: block;
 }
 
 .stat-number {
@@ -656,6 +655,8 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .stat-suffix {
@@ -666,9 +667,12 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
+    display: inline-block;
+    white-space: nowrap;
 }
 
 .stat-label {
+    display: block;
     font-size: 0.875rem;
     font-weight: 500;
     text-transform: uppercase;
